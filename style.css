@@ -54,6 +54,18 @@ button { font-family: var(--font-primary); }
     padding: 0 20px;
 }
 
+/* Utility for truncating text to a set number of lines */
+.line-clamp {
+    /* legacy WebKit/Blink support */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--lines, 3);
+    /* standard property for modern browsers */
+    line-clamp: var(--lines, 3);
+    overflow: hidden;
+}
+
+
 .section-spacing { padding: 50px 0; flex: 0 0 auto; }
 
 .section-title {
@@ -228,9 +240,13 @@ button { font-family: var(--font-primary); }
 }
 
 .product-title {
-    font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;
-    line-height: 1.4; height: 42px; overflow: hidden;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    font-size: 0.95rem;  font-weight: 600;  margin-bottom: 8px;
+    line-height: 1.4;    height: 42px;      overflow: hidden;
+    display: -webkit-box;          /* legacy webkit */
+    display: box;                  /* optional fallback */
+    -webkit-box-orient: vertical;  /* keeps the vertical stacking */
+    -webkit-line-clamp: 2;         /* webkit prefixed */
+    line-clamp: 2;                 /* standard property */
 }
 
 .price-box { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
@@ -371,3 +387,52 @@ ZOOM DO PRODUTO (MODAL) - SETINHAS
 .nav-arrow.left { left: 10px; }
 .nav-arrow.right { right: 10px; }
 .nav-arrow:hover { background: #000; }
+
+
+
+/* =========================================
+PÁGINAS INTERNAS
+========================================= */
+.hero-interno {
+    background: var(--color-black);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-interno h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.hero-interno p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.sobre-content {
+    display: grid;
+    gap: 40px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.sobre-box {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.sobre-box:hover {
+    transform: translateY(-5px);
+}
+
+.sobre-box h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+} 
